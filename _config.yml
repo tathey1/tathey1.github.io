@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Thomas Athey"
 title_separator          : "-"
 name                     : &name "Thomas Athey"
-description              : &description "personal description"
+description              : &description "PhD candidate n Biomedical Engineering at Johns Hopkins University"
 url                      : https://tathey1.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "tathey1/tathey1.github.io"
@@ -82,11 +82,11 @@ analytics:
 author:
   name             : "Thomas Athey"
   avatar           : "profile.png"
-  bio              : "Your biography for the left-hand sidebar"
+  bio              : "PhD candidate n Biomedical Engineering at Johns Hopkins University"
   location         : "Baltimore, MD"
   employer         :
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  googlescholar    : "http://yourfullgooglescholarurl.com"
+  pubmed           : "https://pubmed.ncbi.nlm.nih.gov/?term=Athey+TL&cauthor_id=35468989"
+  googlescholar    : "https://scholar.google.com/citations?user=VxkeydIAAAAJ&hl=en&oi=ao"
   email            :
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
