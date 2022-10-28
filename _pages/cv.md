@@ -17,6 +17,7 @@ Education
 
 Academic Honors
 ======
+
 Prizes and Awards
 ------
 * Trainee Travel Award, 2020 Brain Initiative Investigators Meeting.
@@ -59,6 +60,7 @@ Teaching
   
 Advising
 ======
+
 Masters Students
 ------
 * Shreya Singh (Spring 2021, Johns Hopkins University)
