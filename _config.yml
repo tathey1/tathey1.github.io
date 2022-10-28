@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Thomas Athey"
 title_separator          : "-"
 name                     : &name "Thomas Athey"
-description              : &description "PhD candidate n Biomedical Engineering at Johns Hopkins University"
+description              : &description "PhD candidate in Biomedical Engineering at Johns Hopkins University"
 url                      : https://tathey1.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "tathey1/tathey1.github.io"
@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Thomas Athey"
   avatar           : "profile.jpg"
-  bio              : "PhD candidate n Biomedical Engineering at Johns Hopkins University"
+  bio              : "PhD candidate in Biomedical Engineering at Johns Hopkins University"
   location         : "Baltimore, MD"
   employer         :
   pubmed           : "https://pubmed.ncbi.nlm.nih.gov/?term=Athey+TL&cauthor_id=35468989"
