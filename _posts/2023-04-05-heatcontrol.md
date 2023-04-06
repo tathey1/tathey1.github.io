@@ -33,7 +33,7 @@ Our goal is to minimize the total gas burned during our absence, which is:
 
 $$C(u)=\int_0^T |u(t)|dt$$
 
-where the Lagrangian is $L(u)=\vert u(t)\vert$. As mentioned before, the system is controllable at any positive time. Further, it can be shown that the total gas burned, $C$ can be made infinitely small by waiting longer and longer to heat the home back up (and doing so by burning a lot of gas $u$). This degenerate problem is not interesting, so we consider a constrained control, $u \in L^\infty([0,T],[0,U])$. In this case, we have to assume that $U/k>H_i>H_o$, meaning we can burn gas at a rate fast enough to achieve our desired temperature and that our desired temperature is warmer than the outside temperature.
+where the Lagrangian is $L(u)=\vert u(t)\vert$. As mentioned before, the system is controllable at any positive time. Further, it can be shown that the total gas burned, $C$ can be made infinitely small by waiting longer and longer to heat the home back up (and doing so by burning gas at a very high rate $u$). This degenerate problem is not interesting, so we consider a constrained control, $u \in L^\infty([0,T],[0,U])$ i.e. $u$ has a maximal value of $U$. In this case, we have to assume that $U/k>H_i>H_o$, meaning we can burn gas at a rate fast enough to achieve our desired temperature and that our desired temperature is warmer than the outside temperature. I will not focus on the units of $u$ but, each unit $u$ is the rate of energy consumption needed to heat up the home at a rate of $1$ degree per day, when the home is the same temperature as the outdoors. 
 
 Solving the Optimal Control Problem
 ======
@@ -42,9 +42,7 @@ Our Hamiltonian is:
 
 $$H_\lambda(y,p,u)=p(u-ky)-\lambda |u|$$
 
-And we can apply the strong Pontryagin maximum principle which is a necessary condition for an optimal control $u$, assuming one exists. The condition for optimality is in the following equations.
-
-The evolution equations:
+And we can apply the strong Pontryagin maximum principle which is a necessary condition for an optimal control $u$, assuming one exists. The condition for optimality is in the following equations:
 
 $$
 \begin{align}
@@ -58,15 +56,15 @@ $$
 \end{align}
 $$
 
-First, the first equation tells us that $p(t)=p(0)e^{kt}$. If $p(0) \leq 0$ then the resulting control would be $u(t)=0$ which will not achieve the terminal condition (the house would cool below the desired temperature since $H_i>H_o$). Thus $p(t)=p(0)e^{kt}$ is always positive. Next, if $\lambda=0$, then this would result in the control $u(t)=U$, which also would not achieve the terminal condition (the house would be heated to high since $U/k>H_i$). So we can assume $\lambda=1$, and that $p(0) < \lambda$, since otherwise the control would again be $u(t)=U$. In this case, the control involves $u=0$ up to some time $t'$, at which point the furnace kicks on at maximal power $U$. Let's compute the time at which the furnace should kick on by solving for $y$.
+First, Equation 6 tells us that $p(t)=p(0)e^{kt}$. If $p(0) \leq 0$ then the resulting control would be $u(t)=0$ which will not satisfy the terminal condition (the house would cool below the desired temperature). Thus $p(t)=p(0)e^{kt}$ is always positive. Next, if $\lambda=0$, then this would result in the control $u(t)=U$, which also would not satisfy the terminal condition (the house would be heated to above the desired temperature). So we can assume $\lambda=1$, and that $p(0) < \lambda$, since otherwise the control would again be $u(t)=U$. In this case, the control involves $u=0$ up to some time $t'$, at which point the furnace kicks on at maximal power $U$. Let's compute the time at which the furnace should kick on by solving for $y$.
 
 $$
 \begin{align*}
-  y(t) &= y(0)e^{-kt} & 0<t<t'
+  y(t) &= y(0)e^{-kt} & 0<t\leq t'
 \end{align*}
 $$
 
-After time $t'$ we have $\dot y = U-ky$, so we make the substitution $z=y-U/k$ to get $\dot z=-kz$ for the solution $z(t)=z(t')e^{-k(t-t')}$ which means:
+After time $t'$ we have $\dot y = U-ky$, so we make the substitution $z=y-U/k$ to get $\dot z=-kz$ with the solution $z(t)=z(t')e^{-k(t-t')}$ which means:
 
 $$
 \begin{align*}
@@ -88,16 +86,16 @@ $$
 \end{align*}
 $$
 
-In other words, the furnace should kick on at maximal power $U$ at a time $-\frac{\log \left(1-\frac{H_i-H_o}{U/k}(1-e^{-kT}) \right)}{k}$ before your time of return (for those of you wondering, this is a positive quantity, since the argument of the logarithm is below 1 given our assumption $U/k>H_i>H_o$).
+In other words, **the furnace should kick on at maximal power $U$ at a time $-\frac{\log \left(1-\frac{H_i-H_o}{U/k}(1-e^{-kT}) \right)}{k}$ before your time of return** (yes, this is a positive quantity, since the argument of the logarithm is below 1 given our assumption $U/k>H_i>H_o$).
 
 Parameter Effects on Heating Time and Energy Consumption
 ======
 
-Let's examine the influence of the different parameters on the time to reheat ($T-t'$) and average energy spent per day ($\int \vert u\vert dt/T$). The parameters we will look at are time spent away ($T$), temperature difference between outside and inside ($H_i-H_o$), maximum heating power ($U$), and cooling rate ($k$). When a parameter is not being varied, it takes its default value of $T=7$ days, $H_i-H_o=35$ F, $U=24$, $k=0.34 \; \text{day}^{-1}$
+Let's examine the influence of the different parameters on the time to reheat ($T-t'$) and average energy spent per day ($\int \vert u\vert dt/T$). The parameters we will look at are time spent away ($T$), temperature difference between outside and inside ($H_i-H_o$), maximum heating power ($U$), and cooling rate ($k$). When a parameter is not being varied, it takes its default value of $T=7$ days, $H_i-H_o=35$ F, $U=24$, $k=0.34 \; \text{day}^{-1}$. The default value of $k$ means the temperature difference between the house and the outdoors cuts in half roughly every two days, which seems reasonable. The default value of $U$ means the maximal temperature that the furnace can heat the house is $100$ degrees, which also seems reasonable.
 
 <img src="/images/heatcontrol/fig.png"/>
 
-The results are mostly intuitive. First of all, faster cooling rate or higher temperature difference between inside and outside requires more average energy used and more advanced notice to reheat the home. A higher maximum heating power shortens the heating time, but also perhaps unintuitively lowers the amount of total energy used. Lastly, the longer you are away means your furnace needs more time to reheat, but overall less average energy consumed per day - so for the sake of energy consumption, take a vacation!
+The results are mostly intuitive. First of all, faster cooling rate or higher temperature difference between inside and outside requires more average energy used and more advanced time to reheat the home. A higher maximum heating power shortens the heating time, but also perhaps unintuitively lowers the amount of total energy used (this is related to the degenerate unconstrained problem mentioned earlier). Lastly, the longer you are away means your furnace needs more time to reheat, but overall less average energy consumed per day - so for the sake of energy consumption, take a vacation!
 
 Assumptions
 ======
@@ -111,3 +109,6 @@ Of course, outdoor temperatures fluctuate with weather systems, and day/night. H
 - Your heater has constant efficiency across its operating range
 
 This is probably false, but I am not an HVAC expert enough to know the extent to which this is false. But it is likely that at high power, the furnace is less efficient, just like a car going at high speeds. This could change the nature of our control because it might be more useful to exploit the most efficient window of operation. However, absent any further information about how furnaces operate, I am not able to include this in my model.
+
+Thank you for reading!
+======
