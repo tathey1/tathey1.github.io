@@ -88,7 +88,7 @@ $$
 \end{align*}
 $$
 
-In other words, the furnace should kick on at a time $-\frac{\log \left(1-\frac{H_i-H_o}{U/k}(1-e^{-kT}) \right)}{k}$ before your time of return (for those of you wondering, this is a positive quantity, since the argument of the logarithm is below 1 given our assumption $U/k>H_i>H_o$).
+In other words, the furnace should kick on at maximal power $U$ at a time $-\frac{\log \left(1-\frac{H_i-H_o}{U/k}(1-e^{-kT}) \right)}{k}$ before your time of return (for those of you wondering, this is a positive quantity, since the argument of the logarithm is below 1 given our assumption $U/k>H_i>H_o$).
 
 Parameter Effects on Heating Time and Energy Consumption
 ======
