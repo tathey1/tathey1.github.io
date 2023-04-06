@@ -28,5 +28,24 @@ And our endpoint conditions are $x(0)=x(T)=H_i-H_o:=\Delta$. Our goal is to mini
 
 $$C(u)=\int_0^T |u(t)|dt$$
 
+where the Lagrangian is $L(u)=|u(t)|$.
+
 The Hamiltonian
 ======
+
+Our Hamiltonian is:
+
+$$H_\lambda(y,p,u)=p(u-ky)+\lambda |u|$$
+
+And we can apply the strong Pontryagin maximum principle which is a necessary condition for an optimal control $u$, assuming one exists. The condition for optimality is in the following equations.
+
+The evolution equations:
+
+$$
+\begin{align}
+  \dot x &= \nabla_p H_\lambda \\
+  &= u-ky \\
+  \dot p &= -\nabla_y H_\lambda \\
+  &= kp
+\end{align}
+$$
