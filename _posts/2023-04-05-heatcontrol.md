@@ -6,7 +6,7 @@ tags:
   - cool posts
 ---
 
-What should your thermostat do when you are away from home? Say you keep the temperature of your home, $x(t)$, at a fixed temperature $H_i$ when you are around. Assume that you are going to be leaving for a winter vacation at time $t=0$, and you want the home to be the same temperature when you return at time $t=T$, but you don't care about the home's temperature when you are gone. We will use Pntryagin's maximum principle to achieve your desired final temperature, while minimize the amount of energy used in the meantime.
+What should your thermostat do when you are away from home? Say you keep the temperature of your home, $x(t)$, at a fixed temperature $H_i$ when you are around. Assume that you are going to be leaving for a winter vacation at time $t=0$, and you want the home to be the same temperature when you return at time $t=T$, but you don't care about the home's temperature when you are gone. We will use Pontryagin's maximum principle to achieve your desired final temperature, while minimizing the amount of energy used while you are gone.
 
 Acknowledgements
 ======
@@ -95,7 +95,20 @@ Parameter Effects on Heating Time and Energy Consumption
 
 Let's examine the influence of the different parameters on the time to reheat ($T-t'$) and average energy spent per day ($\int \vert u\vert dt/T$). The parameters we will look at are time spent away ($T$), temperature difference between outside and inside ($H_i-H_o$), maximum heating power ($U$), and cooling rate ($k$). When a parameter is not being varied, it takes its default value of $T=7$ days, $H_i-H_o=35$ F, $U=24$, $k=0.34 \; \text{day}^{-1}$
 
-<img src="fig.png"
-     style="float: left; margin-right: 10px;" />
+<img src="/_posts/fig.png"/>
+
 
 The results are mostly intuitive. First of all, faster cooling rate or higher temperature difference between inside and outside requires more average energy used and more advanced notice to reheat the home. A higher maximum heating power shortens the heating time, but also perhaps unintuitively lowers the amount of total energy used. Lastly, the longer you are away means your furnace needs more time to reheat, but overall less average energy consumed per day - so for the sake of energy consumption, take a vacation!
+
+Assumptions
+======
+
+This analysis relies on a model of your home's temperature which is, of course, wrong. Among the assumptions which may or may not matter in the real world are:
+
+- Constant outdoor temperature $H_o$
+
+Of course, outdoor temperatures fluctuate with weather systems, and day/night. However this shouldn't really change the strategy, as long as you can dynamically compute how much time your home will need to heat up, and that the outdoor temperature is roughly constant while the home is reheating.
+
+- Your heater has constant efficiency across its operating range
+
+This is probably false, but I am not an HVAC expert enough to know the extent to which this is false. But it is likely that at high power, the furnace is less efficient, just like a car going at high speeds. This could change the nature of our control because it might be more useful to exploit the most efficient window of operation. However, absent any further information about how furnaces operate, I am not able to include this in my model.
