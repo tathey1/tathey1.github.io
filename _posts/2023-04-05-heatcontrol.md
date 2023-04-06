@@ -101,6 +101,8 @@ Let's examine the influence of the different parameters on the time to reheat ($
 
 The results are mostly intuitive. First of all, faster cooling rate or higher temperature difference between inside and outside requires more average energy used and more advanced notice to reheat the home. A higher maximum heating power shortens the heating time, but also perhaps unintuitively lowers the amount of total energy used. Lastly, the longer you are away means your furnace needs more time to reheat, but overall less average energy consumed per day - so for the sake of energy consumption, take a vacation!
 
+<img src="/images/profile.jpg"/>
+
 Assumptions
 ======
 
