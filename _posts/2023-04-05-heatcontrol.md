@@ -24,7 +24,7 @@ However we will make a substitution for simplicity $y=x-H_o$:
 
 $$\dot y(t)=-ky(t)+u(t)$$
 
-And our endpoint conditions are $x(0)=x(T)=H_i-H_o:=\Delta$. First, we note that we have a linear, homogeneous, autonomous system. Further, the coefficient on $u$ is nonzero so the system is controllable by the Kalman condition. In particular, at any time $T>0$, we can control the system to any state $y$. This means that, for example, no matter what temperature our house is before we get back, it can be controlled to our desired temperature in an infinitely small amount of time. 
+And our endpoint conditions are $y(0)=y(T)=H_i-H_o:=\Delta$. First, we note that we have a linear, homogeneous, autonomous system. Further, the coefficient on $u$ is nonzero so the system is controllable by the Kalman condition. In particular, at any time $T>0$, we can control the system to any state $y$. This means that, for example, no matter what temperature our house is before we get back, it can be controlled to our desired temperature in an infinitely small amount of time. 
 
 Goal
 ------
@@ -48,22 +48,44 @@ The evolution equations:
 
 $$
 \begin{align}
-  \dot x &= \nabla_p H_\lambda(y,p,u) \nonumber \\
+  \dot y &= \nabla_p H_\lambda(y,p,u) \nonumber \\
   &= u-ky \\
   \dot p &= -\nabla_y H_\lambda(y,p,u) \nonumber \\
   &= kp \\
-  u(t) &= argmax_{v \in [0,U]} H_\lambda(y,p,v) \nonumber \\
-  &= argmax_{v \in [0,U]} p(v-ky)+\lambda |v| \nonumber \\
-  &= argmax_{v \in [0,U]} v(p-\lambda)
+  u(t) &= argmax_{v \in [0,U]} \; H_\lambda(y,p,v) \nonumber \\
+  &= argmax_{v \in [0,U]} \; p(v-ky)+\lambda |v| \nonumber \\
+  &= argmax_{v \in [0,U]} \; v(p-\lambda)
 \end{align}
 $$
 
-First, the first equation tells us that $p(t)=p(0)e^{kt}$. If $p(0) \leq 0$ then the resulting control would be $u(t)=0$ which will not achieve the terminal condition (the house would cool below the desired temperature since $H_i>H_o$). Thus $p(t)=p(0)e^{kt}$ is always positive. Next, if $\lambda=0$, then this would result in the control $u(t)=U$, which also would not achieve the terminal condition (the house would be heated to high since $U/k>H_i$). So we can assume $\lambda=1$, and that $p(0) < \lambda$, since otherwise the control would again be $u(t)=U$. In this case, the control involves $u=0$ up to some time $t'$, at which point the furnace kicks on at maximal power $U$. Let's solve for this time:
+First, the first equation tells us that $p(t)=p(0)e^{kt}$. If $p(0) \leq 0$ then the resulting control would be $u(t)=0$ which will not achieve the terminal condition (the house would cool below the desired temperature since $H_i>H_o$). Thus $p(t)=p(0)e^{kt}$ is always positive. Next, if $\lambda=0$, then this would result in the control $u(t)=U$, which also would not achieve the terminal condition (the house would be heated to high since $U/k>H_i$). So we can assume $\lambda=1$, and that $p(0) < \lambda$, since otherwise the control would again be $u(t)=U$. In this case, the control involves $u=0$ up to some time $t'$, at which point the furnace kicks on at maximal power $U$. Let's compute the time at which the furnace should kick on by solving for $y$.
 
 $$
 \begin{align*}
-  x(t) &= H_ie^{-kt} & 0<t<t' \\
-  x(t) &= 
+  y(t) &= y(0)e^{-kt} & 0<t<t'
 \end{align*}
 $$
 
+After time $t'$ we have $\dot y = U-ky$, so we make the substitution $z=y-U/k$ to get $\dot z=-kz$ for the solution $z(t)=z(t')e^{-k(t-t')}$ which means:
+
+$$
+\begin{align*}
+  y(t) &= (y(t')-U/k)e^{-k(t-t')}+U/k & t'<t<T \\
+  &= (y(0)e^{-kt'}-U/k)e^{-k(t-t')}+U/k \\
+  &= y(0)e^{-kt}-U/ke^{-k(t-t')}+U/k \\
+  &= (H_i-H_o)e^{-kt}-U/ke^{-k(t-t')}+U/k
+\end{align*}
+$$
+
+And in order to satisfy the terminal condition, we have:
+
+$$
+\begin{align*}
+  H_i-H_o &= (H_i-H_o)e^{-kT}-U/ke^{-k(T-t')}+U/k \\
+  (H_i-H_o)(1-e^{-kT})-U/k &= -U/ke^{-k(T-t')} \\
+  1-\frac{H_i-H_o}{U/k}(1-e^{-kT}) &= e^{-k(T-t')} \\
+  T+\frac{\log \left(1-\frac{H_i-H_o}{U/k}(1-e^{-kT}) \right)}{k} &= t'
+\end{align*}
+$$
+
+In other words, the furnace should kick on at a time $-\frac{\log \left(1-\frac{H_i-H_o}{U/k}(1-e^{-kT}) \right)}{k}$ before your time of return (for those of you wondering, this is a positive quantity, since the argument of the logarithm is below 1 given our assumption $U/k>H_i>H_o$).
