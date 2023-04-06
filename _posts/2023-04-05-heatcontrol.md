@@ -1,6 +1,6 @@
 ---
 title: 'Optimal Control of Heating During Vacation'
-date: 2023-04-05
+date: 2023-04-06
 permalink: /posts/2023/04/control-heat/
 tags:
   - cool posts
