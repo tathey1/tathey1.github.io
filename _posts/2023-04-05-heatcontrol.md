@@ -35,7 +35,7 @@ $$C(u)=\int_0^T |u(t)|dt$$
 
 where the Lagrangian is $L(u)=\vert u(t)\vert$. As mentioned before, the system is controllable at any positive time. Further, it can be shown that the total gas burned, $C$ can be made infinitely small by waiting longer and longer to heat the home back up (and doing so by burning a lot of gas $u$). This degenerate problem is not interesting, so we consider a constrained control, $u \in L^\infty([0,T],[0,U])$. In this case, we have to assume that $U/k>H_i>H_o$, meaning we can burn gas at a rate fast enough to achieve our desired temperature and that our desired temperature is warmer than the outside temperature.
 
-The Hamiltonian
+Solving the Optimal Control Problem
 ======
 
 Our Hamiltonian is:
@@ -89,3 +89,13 @@ $$
 $$
 
 In other words, the furnace should kick on at a time $-\frac{\log \left(1-\frac{H_i-H_o}{U/k}(1-e^{-kT}) \right)}{k}$ before your time of return (for those of you wondering, this is a positive quantity, since the argument of the logarithm is below 1 given our assumption $U/k>H_i>H_o$).
+
+Parameter Effects on Heating Time and Energy Consumption
+======
+
+Let's examine the influence of the different parameters on the time to reheat ($T-t'$) and average energy spent per day ($\int \vert u\vert dt/T$). The parameters we will look at are time spent away ($T$), temperature difference between outside and inside ($H_i-H_o$), maximum heating power ($U$), and cooling rate ($k$). When a parameter is not being varied, it takes its default value of $T=7$ days, $H_i-H_o=35$ F, $U=24$, $k=0.34 \; \text{day}^{-1}$
+
+<img src="fig.png"
+     style="float: left; margin-right: 10px;" />
+
+The results are mostly intuitive. First of all, faster cooling rate or higher temperature difference between inside and outside requires more average energy used and more advanced notice to reheat the home. A higher maximum heating power shortens the heating time, but also perhaps unintuitively lowers the amount of total energy used. Lastly, the longer you are away means your furnace needs more time to reheat, but overall less average energy consumed per day - so for the sake of energy consumption, take a vacation!
