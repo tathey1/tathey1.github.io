@@ -24,7 +24,7 @@ However we will make a substitution for simplicity $y=x-H_o$:
 
 $$\dot y(t)=-ky(t)+u(t)$$
 
-And our endpoint conditions are $y(0)=y(T)=H_i-H_o:=\Delta$. First, we note that we have a linear, homogeneous, autonomous system. Further, the coefficient on $u$ is nonzero so the system is controllable by the Kalman condition. In particular, at any time $T>0$, we can control the system to any state $y$. This means that, for example, no matter what temperature our house is before we get back, it can be controlled to our desired temperature in an infinitely small amount of time. 
+And our endpoint conditions are $y(0)=y(T)=H_i-H_o$. First, we note that we have a linear, homogeneous, autonomous system. Further, the coefficient on $u$ is nonzero so the system is controllable by the Kalman condition. In particular, at any time $T>0$, we can control the system to any state $y$. This means that, for example, no matter what temperature our house is before we get back, it can be controlled to our desired temperature in an infinitely small amount of time. 
 
 Goal
 ------
