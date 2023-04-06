@@ -95,13 +95,9 @@ Parameter Effects on Heating Time and Energy Consumption
 
 Let's examine the influence of the different parameters on the time to reheat ($T-t'$) and average energy spent per day ($\int \vert u\vert dt/T$). The parameters we will look at are time spent away ($T$), temperature difference between outside and inside ($H_i-H_o$), maximum heating power ($U$), and cooling rate ($k$). When a parameter is not being varied, it takes its default value of $T=7$ days, $H_i-H_o=35$ F, $U=24$, $k=0.34 \; \text{day}^{-1}$
 
-<img src="/_posts/fig.png"/>
-
-<img src="/images/profile.jpg"/>
+<img src="/images/heatcontrol/fig.png"/>
 
 The results are mostly intuitive. First of all, faster cooling rate or higher temperature difference between inside and outside requires more average energy used and more advanced notice to reheat the home. A higher maximum heating power shortens the heating time, but also perhaps unintuitively lowers the amount of total energy used. Lastly, the longer you are away means your furnace needs more time to reheat, but overall less average energy consumed per day - so for the sake of energy consumption, take a vacation!
-
-<img src="/images/profile.jpg"/>
 
 Assumptions
 ======
